@@ -1,0 +1,17 @@
+---
+group: main
+environments:
+  - prod
+
+components:
+  - type: public-function
+    runtime: python
+    entry: main.py
+    methods: '*'
+    route: helloworld-python.example.com
+
+  - type: public-function
+    runtime: python
+    entry: test/main.py
+    methods: '*'
+    route: helloworld-python-test.example.com

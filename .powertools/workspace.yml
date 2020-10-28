@@ -1,0 +1,66 @@
+---
+gcp_project_id: gcp-project-id
+name: workspace-id
+id: workspace-id
+
+# workspace owners
+owners:
+  - owner@example.com
+
+users:
+  - user@example.com
+
+# default labels to be added to all powertools managed resources
+default_labels:
+  key: value
+
+root_domains:
+  - example.com
+  - example.org
+
+dns_records:
+  # create a single dns record with the root domain embedded
+  - name: cname.example.com
+    type: cname
+    ttl: 3600
+    records:
+      - s2.domainkey.ul67.
+
+  # create the same dns record on multiple root domains
+  - name: multiple-domains
+    type: cname
+    ttl: 3600
+    records:
+      - record.
+    root_domains:
+      - example.com
+      - example.org
+
+environments:
+  - name: prod
+    gcp_region: us-east1
+    zones: 1
+    create_group_node_pools: false
+    release_target: true
+
+  - name: stage
+    gcp_region: us-west1
+    zones: 1
+    create_group_node_pools: false
+
+# groups are used to manage services and the permissions to develop and deploy them. Users must be added to a group to
+# operate any service within it. In production environments, groups can run in their own infrastructure.
+groups:
+  - name: main
+    default: true
+    users:
+      - owner@example.com
+    nodes_per_zone: 1-3
+    machine_type: n1-standard-1
+
+  - name: worker
+    machine_type: n1-standard-1
+    users:
+      - owner@example.com
+    nodes_per_zone: 1
+    machine_type: n1-standard-1

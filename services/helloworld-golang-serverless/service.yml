@@ -1,0 +1,17 @@
+---
+group: main
+environments:
+  - prod
+
+components:
+  - type: public-function
+    runtime: go
+    entry: helloworld.go
+    methods: '*'
+    route: helloworld-go.oncloud.dev
+
+  - type: public-function
+    runtime: go-1.15
+    entry: about/main.go
+    methods: '*'
+    route: helloworld-go-about.oncloud.dev

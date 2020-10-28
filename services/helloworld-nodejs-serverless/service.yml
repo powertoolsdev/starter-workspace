@@ -1,0 +1,11 @@
+---
+group: main
+environments:
+  - prod
+
+components:
+  - type: public-function
+    runtime: nodejs-14
+    entry: index.js
+    methods: '*'
+    route: helloworld-node.example.com

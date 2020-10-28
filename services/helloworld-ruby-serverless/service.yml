@@ -1,0 +1,17 @@
+---
+group: main
+environments:
+  - prod
+
+components:
+  - type: public-function
+    runtime: ruby
+    entry: main.rb
+    methods: '*'
+    route: helloworld-ruby.oncloud.dev
+
+  - type: public-function
+    runtime: ruby
+    entry: about/main.rb
+    methods: '*'
+    route: helloworld-ruby.oncloud.dev/about

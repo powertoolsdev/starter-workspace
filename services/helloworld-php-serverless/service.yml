@@ -1,0 +1,11 @@
+---
+group: main
+environments:
+  - prod
+
+components:
+  - type: public-function
+    runtime: php
+    entry: index.php
+    methods: '*'
+    route: helloworld-php.example.com
